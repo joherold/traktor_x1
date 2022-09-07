@@ -12,7 +12,7 @@ function KontrolX1Controller() {
 
     this.registerInputPackets = function() {
         var packet = new HIDPacket('control', 0x1)
- 
+
         // Knobs. 2 bytes per knob.
         packet.addControl('hid', 'knob_00', 1, 'H') // Knob 0,0
         packet.addControl('hid', 'knob_01', 3, 'H') // Knob 0,1
@@ -214,33 +214,45 @@ function KontrolX1Controller() {
 
         // Beatjump backward.
         controller.setCallback('control', 'hid', 'button_80', function(button) {
-                controller.toggle('[Channel1]', 'beatjump_0.5_backward')
+                controller.toggle('[Channel1]', 'beatjump_0.25_backward')
         })
 
         // Beatjump backward.
         controller.setCallback('control', 'hid', 'button_82', function(button) {
-                controller.toggle('[Channel2]', 'beatjump_0.5_backward')
+                controller.toggle('[Channel2]', 'beatjump_0.25_backward')
         })
 
         // Beatjump forward.
         controller.setCallback('control', 'hid', 'button_81', function(button) {
-                controller.toggle('[Channel1]', 'beatjump_0.5_forward')
+                controller.toggle('[Channel1]', 'beatjump_0.25_forward')
         })
 
         // Beatjump forward.
         controller.setCallback('control', 'hid', 'button_83', function(button) {
-                controller.toggle('[Channel2]', 'beatjump_0.5_forward')
+                controller.toggle('[Channel2]', 'beatjump_0.25_forward')
         })
 
         // Cue.
-        controller.setCallback('control', 'hid', 'button_90', function(button) {
-                controller.toggle('[Channel1]', 'cue_goto')
-        })
+        controller.setCallback('control', 'hid', 'button_90',
+                function(button) {
+                        if (controller.modifiers.get('shift')) {
+                            controller.toggle('[Channel1]', 'cue_clear')
+                        } else {
+                            controller.toggle('[Channel1]', 'cue_default')
+                        }
+                    }
+        )
 
         // Cue.
-        controller.setCallback('control', 'hid', 'button_92', function(button) {
-                controller.toggle('[Channel2]', 'cue_goto')
-        })
+        controller.setCallback('control', 'hid', 'button_92',
+                function(button) {
+                        if (controller.modifiers.get('shift')) {
+                            controller.toggle('[Channel2]', 'cue_clear')
+                        } else {
+                            controller.toggle('[Channel2]', 'cue_default')
+                        }
+                    }
+        )
 
         // Cup.
         controller.setCallback('control', 'hid', 'button_91', function(button) {
@@ -314,7 +326,7 @@ function KontrolX1Controller() {
         controller.setCallback('control', 'hid', 'knob_40',
         function(field) {
             if (controller.modifiers.get('shift')) {
-                engine.setParameter('[Channel1]', 'beatjump', KontrolX1.scalers['browseScaling_1'](field.value))
+                engine.setParameter('[Channel1]', 'beatjump', engine.getValue('[Channel1]', 'beatjump_size') *  KontrolX1.scalers['browseScaling_1'](field.value))
             } else {
                 engine.setParameter('[Library]', 'MoveVertical', KontrolX1.scalers['browseScaling_0'](field.value))
             }
@@ -324,7 +336,7 @@ function KontrolX1Controller() {
         controller.setCallback('control', 'hid', 'knob_41',
         function(field) {
             if (controller.modifiers.get('shift')) {
-                engine.setParameter('[Channel2]', 'beatjump', KontrolX1.scalers['browseScaling_1'](field.value))
+                engine.setParameter('[Channel2]', 'beatjump', engine.getValue('[Channel2]', 'beatjump_size') *  KontrolX1.scalers['browseScaling_1'](field.value))
             } else {
                 engine.setParameter('[Library]', 'MoveVertical', KontrolX1.scalers['browseScaling_1'](field.value))
             }
@@ -399,11 +411,6 @@ function KontrolX1Controller() {
 
         this.controller.registerOutputPacket(packet)
     }
-
-    this.refreshVolumeLights = function(value, group, key) {
-        var packet = this.controller.getLightsPacket()
-        this.controller.sendLightsUpdate()
-    }.bind(this)
 
     // endregion
 
@@ -483,32 +490,32 @@ KontrolX1.init = function(id) {
     })
 
     // Beatjump backward.
-    KontrolX1.controller.connectLight('[Channel1]', 'beatjump_0.5_backward', function(value, packet, group, name) {
+    KontrolX1.controller.connectLight('[Channel1]', 'beatjump_0.25_backward', function(value, packet, group, name) {
         packet.getField('hid', 'led_80').value = value * 0x7F
     })
 
     // Beatjump backward.
-    KontrolX1.controller.connectLight('[Channel2]', 'beatjump_0.5_backward', function(value, packet, group, name) {
+    KontrolX1.controller.connectLight('[Channel2]', 'beatjump_0.25_backward', function(value, packet, group, name) {
         packet.getField('hid', 'led_82').value = value * 0x7F
     })
 
     // Beatjump forward.
-    KontrolX1.controller.connectLight('[Channel1]', 'beatjump_0.5_forward', function(value, packet, group, name) {
+    KontrolX1.controller.connectLight('[Channel1]', 'beatjump_0.25_forward', function(value, packet, group, name) {
         packet.getField('hid', 'led_81').value = value * 0x7F
     })
 
     // Beatjump forward.
-    KontrolX1.controller.connectLight('[Channel2]', 'beatjump_0.5_forward', function(value, packet, group, name) {
+    KontrolX1.controller.connectLight('[Channel2]', 'beatjump_0.25_forward', function(value, packet, group, name) {
         packet.getField('hid', 'led_83').value = value * 0x7F
     })
 
     // Cue.
-    KontrolX1.controller.connectLight('[Channel1]', 'cue_goto', function(value, packet, group, name) {
+    KontrolX1.controller.connectLight('[Channel1]', 'cue_default', function(value, packet, group, name) {
         packet.getField('hid', 'led_90').value = value * 0x7F
     })
 
     // Cue.
-    KontrolX1.controller.connectLight('[Channel2]', 'cue_goto', function(value, packet, group, name) {
+    KontrolX1.controller.connectLight('[Channel2]', 'cue_default', function(value, packet, group, name) {
         packet.getField('hid', 'led_92').value = value * 0x7F
     })
 
