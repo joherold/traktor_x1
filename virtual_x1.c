@@ -3,7 +3,7 @@ Virtual HID device to use Traktor X1 with Mixxx under Ubuntu.
 
 Based on the standard keyboard2mouse example of uhid. The libusb part has been taken from the bitmaptest code of GoaSkin < https://www.native-instruments.com/forum/threads/programming-the-guide-lights.320806/page-3 >.
 
-NOTE: This an experimental proof-of-concept which does not include any sanity checks, error handling, or is coded in a reasonable way. Do not use!
+NOTE: This an experimental proof of concept which does not include any sanity checks, error handling, and is not coded in a reasonable way. Do not use!
 */
 
 // Includes from uhid example.
@@ -292,7 +292,7 @@ static unsigned char data_in[24];
  static int set_knob_with_int(int m, int n, int decnum)
  {
 
-     // Taken from stackoverflow. Credits to be added.
+     // Taken from stackoverflow < https://stackoverflow.com/questions/27570721/how-to-break-an-int-into-two-chars >.
      int higher_char, lower_char;
      higher_char = decnum / 256;
      lower_char = decnum % 256;
