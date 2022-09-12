@@ -99,5 +99,5 @@ Bugs and missing features
 * Use asynchronous USB traffic instead of synchronous < https://libusb.sourceforge.io/api-1.0/libusb_io.html >.
 * Remove the need to give keyboard input for the uhid script to start.
 * Set LEDs to glow slightly in idle mode.
-* Activate LEDs of shift and hotcue button on press.
+* Activate LEDs of shift and hotcue button when pressed.
 * Rewrite all code in a clean fashion.
