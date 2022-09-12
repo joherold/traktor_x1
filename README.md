@@ -1,4 +1,4 @@
-An experimental proof of concept to use the Traktor Kontrol X1 MK1 with Mixxx 2.4 under Ubuntu 22.04
+An experimental proof of concept for using the Traktor Kontrol X1 MK1 with Mixxx 2.4 under Ubuntu 22.04
 ===
 
 TOC
@@ -97,8 +97,7 @@ Bugs and missing features
 ---
 
 * Use asynchronous USB traffic instead of synchronous < https://libusb.sourceforge.io/api-1.0/libusb_io.html >.
-* Revise scaling of knobs 5,0 and 5,1. Currently, large values are simply ignored.
 * Remove the need to give keyboard input for the uhid script to start.
 * Set LEDs to glow slightly in idle mode.
-* Callbacks in HID mapping include a lot of unnecessary function(button) {...} calls. Remove these.
+* Activate LEDs of shift and hotcue button on press.
 * Rewrite all code in a clean fashion.
