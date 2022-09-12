@@ -81,10 +81,16 @@ function KontrolX1Controller() {
         var controller = this.controller
 
         // Set link modifiers.
+
+        // Button 41.
         controller.linkModifier('hid', 'button_41', 'shift')
+
+        // Button 61.
         controller.linkModifier('hid', 'button_61', 'hotcue')
 
-        // Hotcue 1.
+        // Set buttons.
+
+        // Button 00.
         controller.setCallback('control', 'hid', 'button_00',
         function(button) {
                 if (controller.modifiers.get('shift')) {
@@ -95,7 +101,7 @@ function KontrolX1Controller() {
             }
         )
 
-        // Hotcue 1.
+        // Button 01.
         controller.setCallback('control', 'hid', 'button_01',
         function(button) {
                 if (controller.modifiers.get('shift')) {
@@ -106,7 +112,7 @@ function KontrolX1Controller() {
             }
         )
 
-        // Hotcue 2.
+        // Button 10.
         controller.setCallback('control', 'hid', 'button_10',
         function(button) {
                 if (controller.modifiers.get('shift')) {
@@ -117,7 +123,7 @@ function KontrolX1Controller() {
             }
         )
 
-        // Hotcue 2.
+        // Button 11.
         controller.setCallback('control', 'hid', 'button_11',
         function(button) {
                 if (controller.modifiers.get('shift')) {
@@ -128,7 +134,7 @@ function KontrolX1Controller() {
             }
         )
 
-        // Hotcue 3.
+        // Button 20.
         controller.setCallback('control', 'hid', 'button_20',
         function(button) {
                 if (controller.modifiers.get('shift')) {
@@ -139,7 +145,7 @@ function KontrolX1Controller() {
             }
         )
 
-        // Hotcue 3.
+        // Button 21.
         controller.setCallback('control', 'hid', 'button_21',
         function(button) {
                 if (controller.modifiers.get('shift')) {
@@ -150,7 +156,7 @@ function KontrolX1Controller() {
             }
         )
 
-        // Hotcue 4.
+        // Button 30.
         controller.setCallback('control', 'hid', 'button_30',
         function(button) {
                 if (controller.modifiers.get('shift')) {
@@ -161,7 +167,7 @@ function KontrolX1Controller() {
             }
         )
 
-        // Hotcue 4.
+        // Button 31.
         controller.setCallback('control', 'hid', 'button_31',
         function(button) {
                 if (controller.modifiers.get('shift')) {
@@ -172,67 +178,101 @@ function KontrolX1Controller() {
             }
         )
 
-        // Load track.
+        // Button 40.
         controller.setCallback('control', 'hid', 'button_40', function(button) {
                 controller.toggle('[Channel1]', 'LoadSelectedTrack')
         })
 
-        // Load track.
+        // Button 42.
         controller.setCallback('control', 'hid', 'button_42', function(button) {
                 controller.toggle('[Channel2]', 'LoadSelectedTrack')
         })
 
-        // Actvate beatloop.
+        // Button 60.
         controller.setCallback('control', 'hid', 'button_60', function(button) {
-                controller.toggle('[Channel1]', 'beatloop_activate')
-        })
+                if (controller.modifiers.get('shift')) {
+                    controller.toggle('[Channel1]', 'loop_in_goto')
+                } else {
+                    controller.toggle('[Channel1]', 'beatloop_activate')
+                }
+            }
+        )
 
-        // Activate beatloop.
+        // Button 62.
         controller.setCallback('control', 'hid', 'button_62', function(button) {
-                controller.toggle('[Channel2]', 'beatloop_activate')
-        })
+                if (controller.modifiers.get('shift')) {
+                    controller.toggle('[Channel2]', 'loop_in_goto')
+                } else {
+                    controller.toggle('[Channel2]', 'beatloop_activate')
+                }
+            }
+        )
 
-        // Loop in.
-        controller.setCallback('control', 'hid', 'button_70', function(button) {
-                controller.toggle('[Channel1]', 'loop_in')
-        })
+        // Button 70.
+        controller.setCallback('control', 'hid', 'button_70',
+            function(button) {
+                if (controller.modifiers.get('shift')) {
+                    controller.toggle('[Channel1]', 'rate_perm_down')
+                } else {
+                    controller.toggle('[Channel1]', 'loop_in')
+                }
+            }
+        )
 
-        // Loop in.
-        controller.setCallback('control', 'hid', 'button_72', function(button) {
-                controller.toggle('[Channel2]', 'loop_in')
-        })
+        // Button 72.
+        controller.setCallback('control', 'hid', 'button_72',
+            function(button) {
+                if (controller.modifiers.get('shift')) {
+                    controller.toggle('[Channel2]', 'rate_perm_down')
+                } else {
+                    controller.toggle('[Channel2]', 'loop_in')
+                }
+            }
+        )
 
-        // Loop out.
-        controller.setCallback('control', 'hid', 'button_71', function(button) {
-                controller.toggle('[Channel1]', 'loop_out')
-        })
+        // Button 71.
+        controller.setCallback('control', 'hid', 'button_71',
+            function(button) {
+                if (controller.modifiers.get('shift')) {
+                    controller.toggle('[Channel1]', 'rate_perm_up')
+                } else {
+                    controller.toggle('[Channel1]', 'loop_out')
+                }
+            }
+        )
 
-        // Loop out.
-        controller.setCallback('control', 'hid', 'button_73', function(button) {
-                controller.toggle('[Channel2]', 'loop_out')
-        })
+        // Button 73.
+        controller.setCallback('control', 'hid', 'button_73',
+            function(button) {
+                if (controller.modifiers.get('shift')) {
+                    controller.toggle('[Channel2]', 'rate_perm_up')
+                } else {
+                    controller.toggle('[Channel2]', 'loop_out')
+                }
+            }
+        )
 
-        // Beatjump backward.
+        // Button 80.
         controller.setCallback('control', 'hid', 'button_80', function(button) {
                 controller.toggle('[Channel1]', 'beatjump_0.25_backward')
         })
 
-        // Beatjump backward.
+        // Button 82.
         controller.setCallback('control', 'hid', 'button_82', function(button) {
                 controller.toggle('[Channel2]', 'beatjump_0.25_backward')
         })
 
-        // Beatjump forward.
+        // Button 81.
         controller.setCallback('control', 'hid', 'button_81', function(button) {
                 controller.toggle('[Channel1]', 'beatjump_0.25_forward')
         })
 
-        // Beatjump forward.
+        // Button 83.
         controller.setCallback('control', 'hid', 'button_83', function(button) {
                 controller.toggle('[Channel2]', 'beatjump_0.25_forward')
         })
 
-        // Cue.
+        // Button 90.
         controller.setCallback('control', 'hid', 'button_90',
                 function(button) {
                         if (controller.modifiers.get('shift')) {
@@ -243,7 +283,7 @@ function KontrolX1Controller() {
                     }
         )
 
-        // Cue.
+        // Button 92.
         controller.setCallback('control', 'hid', 'button_92',
                 function(button) {
                         if (controller.modifiers.get('shift')) {
@@ -254,85 +294,87 @@ function KontrolX1Controller() {
                     }
         )
 
-        // Cup.
+        // Button 91.
         controller.setCallback('control', 'hid', 'button_91', function(button) {
                 controller.toggle('[Channel1]', 'cue_play')
         })
 
-        // Cup.
+        // Button 93.
         controller.setCallback('control', 'hid', 'button_93', function(button) {
                 controller.toggle('[Channel2]', 'cue_play')
         })
 
-        // Play.
+        // Button 100.
         controller.setCallback('control', 'hid', 'button_100', function(button) {
             if (button.value === controller.buttonStates.pressed) {
                 controller.toggle('[Channel1]', 'play')
             }
         })
 
-        // Play.
+        // Button 102.
         controller.setCallback('control', 'hid', 'button_102', function(button) {
             if (button.value === controller.buttonStates.pressed) {
                 controller.toggle('[Channel2]', 'play')
             }
         })
 
-        // Sync.
+        // Button 101.
         controller.setCallback('control', 'hid', 'button_101', function(button) {
                 controller.toggle('[Channel1]', 'beatsync')
         })
 
-        // Sync.
+        // Button 103.
         controller.setCallback('control', 'hid', 'button_103', function(button) {
                 controller.toggle('[Channel2]', 'beatsync')
         })
 
-        // Gain.
+        // Set knobs.
+
+        // Knob 00.
         this.linkKnob('default', 'knob_00', '[Channel1]', 'pregain', 'zeroOneScaling')
         controller.setCallback('control', 'hid', 'knob_00', this.knob)
 
-        // Gain.
+        // Knob 01.
         this.linkKnob('default', 'knob_01', '[Channel2]', 'pregain', 'zeroOneScaling')
         controller.setCallback('control', 'hid', 'knob_01', this.knob)
 
-        // High.
+        // Knob 10.
         this.linkKnob('default', 'knob_10', '[EqualizerRack1_[Channel1]_Effect1]', 'parameter3', 'zeroOneScaling')
         controller.setCallback('control', 'hid', 'knob_10', this.knob)
 
-        // High.
+        // Knob 11.
         this.linkKnob('default', 'knob_11', '[EqualizerRack1_[Channel2]_Effect1]', 'parameter3', 'zeroOneScaling')
         controller.setCallback('control', 'hid', 'knob_11', this.knob)
 
-        // Mid.
+        // Knob 20.
         this.linkKnob('default', 'knob_20', '[EqualizerRack1_[Channel1]_Effect1]', 'parameter2', 'zeroOneScaling')
         controller.setCallback('control', 'hid', 'knob_20', this.knob)
 
-        // Mid.
+        // Knob 21.
         this.linkKnob('default', 'knob_21', '[EqualizerRack1_[Channel2]_Effect1]', 'parameter2', 'zeroOneScaling')
         controller.setCallback('control', 'hid', 'knob_21', this.knob)
 
-        // Low.
+        // Knob 30.
         this.linkKnob('default', 'knob_30', '[EqualizerRack1_[Channel1]_Effect1]', 'parameter1', 'zeroOneScaling')
         controller.setCallback('control', 'hid', 'knob_30', this.knob)
 
-        // Low.
+        // Knob 31.
         this.linkKnob('default', 'knob_31', '[EqualizerRack1_[Channel2]_Effect1]', 'parameter1', 'zeroOneScaling')
         controller.setCallback('control', 'hid', 'knob_31', this.knob)
 
         // Note: The encoders had to be adapted, as it is unclear if the implementation of the Z1 mapping allowed for a shift mapping.
 
-        // Browse library.
+        // Knob 40.
         controller.setCallback('control', 'hid', 'knob_40',
         function(field) {
             if (controller.modifiers.get('shift')) {
-                engine.setParameter('[Channel1]', 'beatjump', engine.getValue('[Channel1]', 'beatjump_size') *  KontrolX1.scalers['browseScaling_1'](field.value))
+                engine.setParameter('[Channel1]', 'beatjump', engine.getValue('[Channel1]', 'beatjump_size') *  KontrolX1.scalers['browseScaling_0'](field.value))
             } else {
                 engine.setParameter('[Library]', 'MoveVertical', KontrolX1.scalers['browseScaling_0'](field.value))
             }
         })
 
-        // Browse library.
+        // Knob 41.
         controller.setCallback('control', 'hid', 'knob_41',
         function(field) {
             if (controller.modifiers.get('shift')) {
@@ -342,23 +384,24 @@ function KontrolX1Controller() {
             }
         })
 
-        // Set beatloops.
+        // Knob 50.
         controller.setCallback('control', 'hid', 'knob_50',
         function(field) {
             if (controller.modifiers.get('shift')) {
-                // engine.setParameter('[Channel1]', 'beatloop_size', KontrolX1.scalers['loopScaling'](field.value))
+                engine.setParameter('[Channel1]', 'loop_move', engine.getValue('[Channel1]', 'beatjump_size') * KontrolX1.scalers['moveScaling_0'](field.value))
             } else {
-                engine.setParameter('[Channel1]', 'beatloop_size', KontrolX1.scalers['loopScaling'](field.value))
+                engine.setParameter('[Channel1]', 'beatloop_size', engine.getValue('[Channel1]', 'beatloop_size') * KontrolX1.scalers['loopScaling_0'](field.value))
             }
         })
 
-        // Set beatloops.
+        // Knob 51.
         controller.setCallback('control', 'hid', 'knob_51',
         function(field) {
             if (controller.modifiers.get('shift')) {
-                // engine.setParameter('[Channel2]', 'beatloop_size', KontrolX1.scalers['loopScaling'](field.value))
+                engine.setParameter('[Channel2]', 'loop_move', engine.getValue('[Channel2]', 'beatjump_size') *  KontrolX1.scalers['moveScaling_1'](field.value))
             } else {
-                engine.setParameter('[Channel2]', 'beatloop_size', KontrolX1.scalers['loopScaling'](field.value))
+                // engine.setParameter('[Channel2]', 'beatloop_size', KontrolX1.scalers['loopScaling_1'](field.value))
+                engine.setParameter('[Channel2]', 'beatloop_size', engine.getValue('[Channel2]', 'beatloop_size') * KontrolX1.scalers['loopScaling_1'](field.value))
             }
         })
 
@@ -422,146 +465,171 @@ KontrolX1.init = function(id) {
     KontrolX1.id = id
 
     // Save values for encoders to calculate deltas.
-    KontrolX1.prev_browse_0 = 0
-    KontrolX1.prev_browse_1 = 0
+    KontrolX1.prev_encoder_40 = 0
+    KontrolX1.prev_encoder_41 = 0
+    KontrolX1.prev_encoder_50 = 0
+    KontrolX1.prev_encoder_51 = 0
 
     KontrolX1.registerInputPackets()
     KontrolX1.registerOutputPackets()
     KontrolX1.registerCallbacks()
 
-    // Hotcue 1.
+    // LED 00.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_1_enabled', function(value, packet, group, name) {
         packet.getField('hid', 'led_00').value = value * 0x7F
     })
 
-    // Hotcue 1.
+    // LED 01.
     KontrolX1.controller.connectLight('[Channel2]', 'hotcue_1_enabled', function(value, packet, group, name) {
         packet.getField('hid', 'led_01').value = value * 0x7F
     })
 
-    // Hotcue 2.
+    // LED 10.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_2_enabled', function(value, packet, group, name) {
         packet.getField('hid', 'led_10').value = value * 0x7F
     })
 
-    // Hotcue 2.
+    // LED 11.
     KontrolX1.controller.connectLight('[Channel2]', 'hotcue_2_enabled', function(value, packet, group, name) {
         packet.getField('hid', 'led_11').value = value * 0x7F
     })
 
-    // Hotcue 3.
+    // LED 20.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_3_enabled', function(value, packet, group, name) {
         packet.getField('hid', 'led_20').value = value * 0x7F
     })
 
-    // Hotcue 3.
+    // LED 21.
     KontrolX1.controller.connectLight('[Channel2]', 'hotcue_3_enabled', function(value, packet, group, name) {
         packet.getField('hid', 'led_21').value = value * 0x7F
     })
 
-    // Hotcue 4.
+    // LED 30.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_4_enabled', function(value, packet, group, name) {
         packet.getField('hid', 'led_30').value = value * 0x7F
     })
 
-    // Hotcue 4.
+    // LED 31.
     KontrolX1.controller.connectLight('[Channel2]', 'hotcue_4_enabled', function(value, packet, group, name) {
         packet.getField('hid', 'led_31').value = value * 0x7F
     })
 
-    // Loop in.
+    // LED 70.
     KontrolX1.controller.connectLight('[Channel1]', 'loop_in', function(value, packet, group, name) {
         packet.getField('hid', 'led_70').value = value * 0x7F
     })
 
-    // Loop in.
+    // LED 72.
     KontrolX1.controller.connectLight('[Channel2]', 'loop_in', function(value, packet, group, name) {
         packet.getField('hid', 'led_72').value = value * 0x7F
     })
 
-    // Loop out.
+    // LED 71.
     KontrolX1.controller.connectLight('[Channel1]', 'loop_out', function(value, packet, group, name) {
         packet.getField('hid', 'led_71').value = value * 0x7F
     })
 
-    // Loop out.
+    // LED 73.
     KontrolX1.controller.connectLight('[Channel2]', 'loop_out', function(value, packet, group, name) {
         packet.getField('hid', 'led_73').value = value * 0x7F
     })
 
-    // Beatjump backward.
+    // LED 70.
+    KontrolX1.controller.connectLight('[Channel1]', 'rate_perm_down', function(value, packet, group, name) {
+        packet.getField('hid', 'led_70').value = value * 0x7F
+    })
+
+    // LED 72.
+    KontrolX1.controller.connectLight('[Channel2]', 'rate_perm_down', function(value, packet, group, name) {
+        packet.getField('hid', 'led_72').value = value * 0x7F
+    })
+
+    // LED 71.
+    KontrolX1.controller.connectLight('[Channel1]', 'rate_perm_up', function(value, packet, group, name) {
+        packet.getField('hid', 'led_71').value = value * 0x7F
+    })
+
+    // LED 73.
+    KontrolX1.controller.connectLight('[Channel2]', 'rate_perm_up', function(value, packet, group, name) {
+        packet.getField('hid', 'led_73').value = value * 0x7F
+    })
+
+    // LED 80.
     KontrolX1.controller.connectLight('[Channel1]', 'beatjump_0.25_backward', function(value, packet, group, name) {
         packet.getField('hid', 'led_80').value = value * 0x7F
     })
 
-    // Beatjump backward.
+    // LED 82.
     KontrolX1.controller.connectLight('[Channel2]', 'beatjump_0.25_backward', function(value, packet, group, name) {
         packet.getField('hid', 'led_82').value = value * 0x7F
     })
 
-    // Beatjump forward.
+    // LED 81.
     KontrolX1.controller.connectLight('[Channel1]', 'beatjump_0.25_forward', function(value, packet, group, name) {
         packet.getField('hid', 'led_81').value = value * 0x7F
     })
 
-    // Beatjump forward.
+    // LED 83.
     KontrolX1.controller.connectLight('[Channel2]', 'beatjump_0.25_forward', function(value, packet, group, name) {
         packet.getField('hid', 'led_83').value = value * 0x7F
     })
 
-    // Cue.
-    KontrolX1.controller.connectLight('[Channel1]', 'cue_default', function(value, packet, group, name) {
+    // LED 90.
+    KontrolX1.controller.connectLight('[Channel1]', 'cue_indicator', function(value, packet, group, name) {
         packet.getField('hid', 'led_90').value = value * 0x7F
     })
 
-    // Cue.
-    KontrolX1.controller.connectLight('[Channel2]', 'cue_default', function(value, packet, group, name) {
+    // LED 92.
+    KontrolX1.controller.connectLight('[Channel2]', 'cue_indicator', function(value, packet, group, name) {
         packet.getField('hid', 'led_92').value = value * 0x7F
     })
 
-    // Cup.
+    // LED 91.
     KontrolX1.controller.connectLight('[Channel1]', 'cue_play', function(value, packet, group, name) {
         packet.getField('hid', 'led_91').value = value * 0x7F
     })
 
-    // Cup.
+    // LED 93.
     KontrolX1.controller.connectLight('[Channel2]', 'cue_play', function(value, packet, group, name) {
         packet.getField('hid', 'led_93').value = value * 0x7F
     })
 
-    // Play.
+    // LED 100.
     KontrolX1.controller.connectLight('[Channel1]', 'play', function(value, packet, group, name) {
         packet.getField('hid', 'led_100').value = value * 0x7F
     })
 
-    // Play.
+    // LED 102.
     KontrolX1.controller.connectLight('[Channel2]', 'play', function(value, packet, group, name) {
         packet.getField('hid', 'led_102').value = value * 0x7F
     })
 
-    // Sync.
+    // LED 101.
     KontrolX1.controller.connectLight('[Channel1]', 'beatsync', function(value, packet, group, name) {
         packet.getField('hid', 'led_101').value = value * 0x7F
     })
 
-    // Sync.
+    // LED 103.
     KontrolX1.controller.connectLight('[Channel2]', 'beatsync', function(value, packet, group, name) {
         packet.getField('hid', 'led_103').value = value * 0x7F
     })
 
     // Set scalers for encoders.
     this.scalers = {};
+
     this.scalers['noScaling'] = function(value) {
         return value;
     }
+
     this.scalers['zeroOneScaling'] = function(value) {
         return script.absoluteLin(value, 0, 1, 0, 4095);
     }
+
     this.scalers['browseScaling_0'] = function(value) {
 
         // Calculate delta and save new value.
-        var delta = value - KontrolX1.prev_browse_0
-        KontrolX1.prev_browse_0 = value
+        var delta = value - KontrolX1.prev_encoder_40
+        KontrolX1.prev_encoder_40 = value
 
         // Treat jumps from 0 to 15 and 15 to 0 separately,
         if (delta == -15) {
@@ -576,13 +644,14 @@ KontrolX1.init = function(id) {
         else if (delta < 0) {
             delta = -1
         }
-        return delta;
+        return delta
     }
+
     this.scalers['browseScaling_1'] = function(value) {
 
         // Calculate delta and save new value.
-        var delta = value - KontrolX1.prev_browse_1
-        KontrolX1.prev_browse_1 = value
+        var delta = value - KontrolX1.prev_encoder_41
+        KontrolX1.prev_encoder_41 = value
 
         // Treat jumps from 0 to 15 and 15 to 0 separately,
         if (delta == -15) {
@@ -597,11 +666,95 @@ KontrolX1.init = function(id) {
         else if (delta < 0) {
             delta = -1
         }
-        return delta;
+        return delta
     }
-    this.scalers['loopScaling'] = function(value) {
 
-        return Math.min(Math.pow(2, value), 128);
+    this.scalers['loopScaling_0'] = function(value) {
+
+        // Calculate delta and save new value.
+        var delta = value - KontrolX1.prev_encoder_50
+        KontrolX1.prev_encoder_50 = value
+
+        if (delta == -15) {
+            delta = 1
+        }
+        else if (delta == 15) {
+            delta = -1
+        }
+        else if (delta > 0) {
+            delta = 1
+        }
+        else if (delta < 0) {
+            delta = -1
+        }
+        return Math.pow(2, delta)
+
+    }
+
+    this.scalers['loopScaling_1'] = function(value) {
+
+        // Calculate delta and save new value.
+        var delta = value - KontrolX1.prev_encoder_51
+        KontrolX1.prev_encoder_51 = value
+
+        if (delta == -15) {
+            delta = 1
+        }
+        else if (delta == 15) {
+            delta = -1
+        }
+        else if (delta > 0) {
+            delta = 1
+        }
+        else if (delta < 0) {
+            delta = -1
+        }
+        return Math.pow(2, delta)
+
+    }
+
+    this.scalers['moveScaling_0'] = function(value) {
+
+        // Calculate delta and save new value.
+        var delta = value - KontrolX1.prev_encoder_50
+        KontrolX1.prev_encoder_50 = value
+
+        // Treat jumps from 0 to 15 and 15 to 0 separately,
+        if (delta == -15) {
+            delta = 1
+        }
+        else if (delta == 15) {
+            delta = -1
+        }
+        else if (delta > 0) {
+            delta = 1
+        }
+        else if (delta < 0) {
+            delta = -1
+        }
+        return delta
+    }
+
+    this.scalers['moveScaling_1'] = function(value) {
+
+        // Calculate delta and save new value.
+        var delta = value - KontrolX1.prev_encoder_51
+        KontrolX1.prev_encoder_51 = value
+
+        // Treat jumps from 0 to 15 and 15 to 0 separately,
+        if (delta == -15) {
+            delta = 1
+        }
+        else if (delta == 15) {
+            delta = -1
+        }
+        else if (delta > 0) {
+            delta = 1
+        }
+        else if (delta < 0) {
+            delta = -1
+        }
+        return delta
     }
 
     print('NI Traktor Kontrol X1 ' + KontrolX1.id + ' initialized!')
