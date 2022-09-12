@@ -474,144 +474,148 @@ KontrolX1.init = function(id) {
     KontrolX1.registerOutputPackets()
     KontrolX1.registerCallbacks()
 
+    // Set LED off and on brightness.
+    var LEDon = 0x7F
+    var LEDoff = 0x0A
+
     // LED 00.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_1_enabled', function(value, packet, group, name) {
-        packet.getField('hid', 'led_00').value = value * 0x7F
+        packet.getField('hid', 'led_00').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 01.
     KontrolX1.controller.connectLight('[Channel2]', 'hotcue_1_enabled', function(value, packet, group, name) {
-        packet.getField('hid', 'led_01').value = value * 0x7F
+        packet.getField('hid', 'led_01').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 10.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_2_enabled', function(value, packet, group, name) {
-        packet.getField('hid', 'led_10').value = value * 0x7F
+        packet.getField('hid', 'led_10').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 11.
     KontrolX1.controller.connectLight('[Channel2]', 'hotcue_2_enabled', function(value, packet, group, name) {
-        packet.getField('hid', 'led_11').value = value * 0x7F
+        packet.getField('hid', 'led_11').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 20.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_3_enabled', function(value, packet, group, name) {
-        packet.getField('hid', 'led_20').value = value * 0x7F
+        packet.getField('hid', 'led_20').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 21.
     KontrolX1.controller.connectLight('[Channel2]', 'hotcue_3_enabled', function(value, packet, group, name) {
-        packet.getField('hid', 'led_21').value = value * 0x7F
+        packet.getField('hid', 'led_21').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 30.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_4_enabled', function(value, packet, group, name) {
-        packet.getField('hid', 'led_30').value = value * 0x7F
+        packet.getField('hid', 'led_30').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 31.
     KontrolX1.controller.connectLight('[Channel2]', 'hotcue_4_enabled', function(value, packet, group, name) {
-        packet.getField('hid', 'led_31').value = value * 0x7F
+        packet.getField('hid', 'led_31').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 70.
     KontrolX1.controller.connectLight('[Channel1]', 'loop_in', function(value, packet, group, name) {
-        packet.getField('hid', 'led_70').value = value * 0x7F
+        packet.getField('hid', 'led_70').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 72.
     KontrolX1.controller.connectLight('[Channel2]', 'loop_in', function(value, packet, group, name) {
-        packet.getField('hid', 'led_72').value = value * 0x7F
+        packet.getField('hid', 'led_72').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 71.
     KontrolX1.controller.connectLight('[Channel1]', 'loop_out', function(value, packet, group, name) {
-        packet.getField('hid', 'led_71').value = value * 0x7F
+        packet.getField('hid', 'led_71').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 73.
     KontrolX1.controller.connectLight('[Channel2]', 'loop_out', function(value, packet, group, name) {
-        packet.getField('hid', 'led_73').value = value * 0x7F
+        packet.getField('hid', 'led_73').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 70.
     KontrolX1.controller.connectLight('[Channel1]', 'rate_perm_down', function(value, packet, group, name) {
-        packet.getField('hid', 'led_70').value = value * 0x7F
+        packet.getField('hid', 'led_70').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 72.
     KontrolX1.controller.connectLight('[Channel2]', 'rate_perm_down', function(value, packet, group, name) {
-        packet.getField('hid', 'led_72').value = value * 0x7F
+        packet.getField('hid', 'led_72').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 71.
     KontrolX1.controller.connectLight('[Channel1]', 'rate_perm_up', function(value, packet, group, name) {
-        packet.getField('hid', 'led_71').value = value * 0x7F
+        packet.getField('hid', 'led_71').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 73.
     KontrolX1.controller.connectLight('[Channel2]', 'rate_perm_up', function(value, packet, group, name) {
-        packet.getField('hid', 'led_73').value = value * 0x7F
+        packet.getField('hid', 'led_73').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 80.
     KontrolX1.controller.connectLight('[Channel1]', 'beatjump_0.25_backward', function(value, packet, group, name) {
-        packet.getField('hid', 'led_80').value = value * 0x7F
+        packet.getField('hid', 'led_80').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 82.
     KontrolX1.controller.connectLight('[Channel2]', 'beatjump_0.25_backward', function(value, packet, group, name) {
-        packet.getField('hid', 'led_82').value = value * 0x7F
+        packet.getField('hid', 'led_82').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 81.
     KontrolX1.controller.connectLight('[Channel1]', 'beatjump_0.25_forward', function(value, packet, group, name) {
-        packet.getField('hid', 'led_81').value = value * 0x7F
+        packet.getField('hid', 'led_81').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 83.
     KontrolX1.controller.connectLight('[Channel2]', 'beatjump_0.25_forward', function(value, packet, group, name) {
-        packet.getField('hid', 'led_83').value = value * 0x7F
+        packet.getField('hid', 'led_83').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 90.
     KontrolX1.controller.connectLight('[Channel1]', 'cue_indicator', function(value, packet, group, name) {
-        packet.getField('hid', 'led_90').value = value * 0x7F
+        packet.getField('hid', 'led_90').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 92.
     KontrolX1.controller.connectLight('[Channel2]', 'cue_indicator', function(value, packet, group, name) {
-        packet.getField('hid', 'led_92').value = value * 0x7F
+        packet.getField('hid', 'led_92').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 91.
     KontrolX1.controller.connectLight('[Channel1]', 'cue_play', function(value, packet, group, name) {
-        packet.getField('hid', 'led_91').value = value * 0x7F
+        packet.getField('hid', 'led_91').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 93.
     KontrolX1.controller.connectLight('[Channel2]', 'cue_play', function(value, packet, group, name) {
-        packet.getField('hid', 'led_93').value = value * 0x7F
+        packet.getField('hid', 'led_93').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 100.
     KontrolX1.controller.connectLight('[Channel1]', 'play', function(value, packet, group, name) {
-        packet.getField('hid', 'led_100').value = value * 0x7F
+        packet.getField('hid', 'led_100').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 102.
     KontrolX1.controller.connectLight('[Channel2]', 'play', function(value, packet, group, name) {
-        packet.getField('hid', 'led_102').value = value * 0x7F
+        packet.getField('hid', 'led_102').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 101.
     KontrolX1.controller.connectLight('[Channel1]', 'beatsync', function(value, packet, group, name) {
-        packet.getField('hid', 'led_101').value = value * 0x7F
+        packet.getField('hid', 'led_101').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // LED 103.
     KontrolX1.controller.connectLight('[Channel2]', 'beatsync', function(value, packet, group, name) {
-        packet.getField('hid', 'led_103').value = value * 0x7F
+        packet.getField('hid', 'led_103').value = value * LEDon + (1 - value) * LEDoff
     })
 
     // Set scalers for encoders.
