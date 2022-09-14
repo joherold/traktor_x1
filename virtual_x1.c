@@ -620,41 +620,6 @@ static int read_input_via_libusb(int fd)
 
     send_event(fd);
 
-    // LED output.
-    data_out[8] = btn_down[0][0] * 0x7F;
-    data_out[4] = btn_down[0][1] * 0x7F;
-    data_out[7] = btn_down[1][0] * 0x7F;
-    data_out[3] = btn_down[1][1] * 0x7F;
-    data_out[6] = btn_down[2][0] * 0x7F;
-    data_out[2] = btn_down[2][1] * 0x7F;
-    data_out[5] = btn_down[3][0] * 0x7F;
-    data_out[1] = btn_down[3][1] * 0x7F;
-
-    data_out[29] = btn_down[4][1] * 0x7F;
-    data_out[25] = btn_down[5][0] * 0x7F;
-    data_out[26] = btn_down[5][1] * 0x7F;
-    data_out[27] = btn_down[5][2] * 0x7F;
-    data_out[28] = btn_down[5][3] * 0x7F;
-    data_out[30] = btn_down[6][1] * 0x7F;
-    // data_out[31] = btn_down[6][1] * 0x7F;
-
-    data_out[18] = btn_down[7][0] * 0x7F;
-    data_out[17] = btn_down[7][1] * 0x7F;
-    data_out[16] = btn_down[7][2] * 0x7F;
-    data_out[15] = btn_down[7][3] * 0x7F;
-    data_out[20] = btn_down[8][0] * 0x7F;
-    data_out[19] = btn_down[8][1] * 0x7F;
-    data_out[14] = btn_down[8][2] * 0x7F;
-    data_out[13] = btn_down[8][3] * 0x7F;
-    data_out[22] = btn_down[9][0] * 0x7F;
-    data_out[21] = btn_down[9][1] * 0x7F;
-    data_out[12] = btn_down[9][2] * 0x7F;
-    data_out[11] = btn_down[9][3] * 0x7F;
-    data_out[24] = btn_down[10][0] * 0x7F;
-    data_out[23] = btn_down[10][1] * 0x7F;
-    data_out[10] = btn_down[10][2] * 0x7F;
-    data_out[9] = btn_down[10][3] * 0x7F;
-
     return 0;
 
 }
