@@ -68,7 +68,7 @@ It is necessary to add a udev rule for the virtual X1 such that Mixxx can access
 
 is added to the Mixxx access rules < https://github.com/mixxxdj/mixxx/blob/main/res/linux/mixxx-usb-uaccess.rules > and saved in /etc/udev/rules.d/. A restart might be necessary afterwards.
 
-Access of Mixxx to hidrawX is only provided since using the hidraw backend of hidapi < https://github.com/mixxxdj/mixxx/pull/4054 >. Thus, a development version of Mixxx < https://github.com/mixxxdj/mixxx/blob/main/CHANGELOG.md > is necessary. This approach was last checked with commit f3a3e04 < https://github.com/mixxxdj/mixxx/commit/f3a3e04fe5a732d0a3e61b3bc2e2c3ec904a8630 >.
+Access of Mixxx to hidrawX is only provided since using the hidraw backend of hidapi < https://github.com/mixxxdj/mixxx/pull/4054 >. Thus, a development version of Mixxx < https://github.com/mixxxdj/mixxx/blob/main/CHANGELOG.md > is necessary. This approach was last checked on 20221209 with commit 5ddd671 < https://github.com/mixxxdj/mixxx/commit/5ddd6710b1136ac1c7414ae082a9f9b866dbae24 >.
 
 Compiling from source is well documented < https://github.com/mixxxdj/mixxx/wiki/Compiling-On-Linux >. As virtual uhid devices are created with interface = -1, we need to remove this sanity check in line 48 of src/controllers/hid/hidenumerator.cpp < https://github.com/mixxxdj/mixxx/blob/main/src/controllers/hid/hidenumerator.cpp > before compiling.
 
