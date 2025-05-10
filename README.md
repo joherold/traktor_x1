@@ -61,18 +61,10 @@ To use this for the code of the uhid device, one needs to convert this to some k
 Accessing the virtual device in Mixxx
 ----
 
-It is necessary to add a udev rule for the virtual X1 such that Mixxx can access the device without root privileges. VendorID is 17CC and ProductID is 2305. However, rules specific for the virtual device do not seem to work. Therefore, the rather permissive rule < https://unix.stackexchange.com/questions/85379/dev-hidraw-read-permissions >
-
-    # Virtual X1
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", TAG+="uaccess"
-
-is added to the Mixxx access rules < https://github.com/mixxxdj/mixxx/blob/main/res/linux/mixxx-usb-uaccess.rules > and saved in /etc/udev/rules.d/. A restart might be necessary afterwards.
-
-Access of Mixxx to hidrawX is only provided since using the hidraw backend of hidapi < https://github.com/mixxxdj/mixxx/pull/4054 >. Thus, a development version of Mixxx < https://github.com/mixxxdj/mixxx/blob/main/CHANGELOG.md > is necessary. This approach was last checked on 20221209 with commit 5ddd671 < https://github.com/mixxxdj/mixxx/commit/5ddd6710b1136ac1c7414ae082a9f9b866dbae24 >.
-
-Compiling from source is well documented < https://github.com/mixxxdj/mixxx/wiki/Compiling-On-Linux >. As virtual uhid devices are created with interface = -1, we need to remove this sanity check in line 48 of src/controllers/hid/hidenumerator.cpp < https://github.com/mixxxdj/mixxx/blob/main/src/controllers/hid/hidenumerator.cpp > before compiling.
 
 Mappings for the controllers need to be placed into ~/.mixxx/controllers. Mixxx can then open the device after we assigned the HID mapping in the preferences. The HID mapping in this repository showcases a few basic functions but is far from being usable.
+
+No changes are necessary to the source code for Mixxx 2.5.1 since access of Mixxx to hidrawX has been provided since using the hidraw backend of hidapi < https://github.com/mixxxdj/mixxx/pull/4054 >. 
 
 
 
