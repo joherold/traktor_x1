@@ -61,10 +61,9 @@ To use this for the code of the uhid device, one needs to convert this to some k
 Accessing the virtual device in Mixxx
 ----
 
-
 Mappings for the controllers need to be placed into ~/.mixxx/controllers. Mixxx can then open the device after we assigned the HID mapping in the preferences. The HID mapping in this repository showcases a few basic functions but is far from being usable.
 
-No changes are necessary to the source code for Mixxx 2.5.1 since access of Mixxx to hidrawX has been provided since using the hidraw backend of hidapi < https://github.com/mixxxdj/mixxx/pull/4054 >. 
+It does not seem necessary anymore to the change the source code of Mixxx. Tested with Mixxx 2.5.1, using the virtual device worked out of the box.
 
 
 
