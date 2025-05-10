@@ -63,7 +63,7 @@ Accessing the virtual device in Mixxx
 
 Mappings for the controllers need to be placed into ~/.mixxx/controllers. Mixxx can then open the device after we assigned the HID mapping in the preferences. The HID mapping in this repository showcases a few basic functions but is far from being usable.
 
-It does not seem necessary anymore to the change the source code of Mixxx. Tested with Mixxx 2.5.1, using the virtual device worked out of the box.
+It doesn't seem necessary anymore to modify the source code of Mixxx. Using the virtual device worked out of the box when testing with Mixxx 2.5.1.
 
 
 
