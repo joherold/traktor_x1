@@ -617,15 +617,15 @@ KontrolX1.init = function(id) {
         packet.getField('hid', 'led_103').value = value * LEDon + (1 - value) * LEDoff
     })
 
-    // // LED 41.
-    // KontrolX1.controller.connectLight('', 'shift', function(value, packet, group, name) {
-    //     packet.getField('hid', 'led_41').value = value * LEDon + (1 - value) * LEDoff
-    // })
+    // LED 41.
+    KontrolX1.controller.connectLight('', 'shift', function(value, packet, group, name) {
+        packet.getField('hid', 'led_41').value = value * LEDon + (1 - value) * LEDoff
+    })
 
-    // // LED 61.
-    // KontrolX1.controller.connectLight('', 'hotcue', function(value, packet, group, name) {
-    //     packet.getField('hid', 'led_61').value = value * LEDon + (1 - value) * LEDoff
-    // })
+    // LED 61.
+    KontrolX1.controller.connectLight('', 'hotcue', function(value, packet, group, name) {
+        packet.getField('hid', 'led_61').value = value * LEDon + (1 - value) * LEDoff
+    })
 
     // Set scalers for encoders.
     this.scalers = {};
