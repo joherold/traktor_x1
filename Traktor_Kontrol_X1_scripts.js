@@ -400,7 +400,6 @@ function KontrolX1Controller() {
             if (controller.modifiers.get('shift')) {
                 engine.setParameter('[Channel2]', 'loop_move', engine.getValue('[Channel2]', 'beatjump_size') *  KontrolX1.scalers['moveScaling_1'](field.value))
             } else {
-                // engine.setParameter('[Channel2]', 'beatloop_size', KontrolX1.scalers['loopScaling_1'](field.value))
                 engine.setParameter('[Channel2]', 'beatloop_size', engine.getValue('[Channel2]', 'beatloop_size') * KontrolX1.scalers['loopScaling_1'](field.value))
             }
         })
@@ -476,7 +475,7 @@ KontrolX1.init = function(id) {
 
     // Set LED off and on brightness.
     var LEDon = 0x7F
-    var LEDoff = 0x0A
+    var LEDoff = 0x05
 
     // LED 00.
     KontrolX1.controller.connectLight('[Channel1]', 'hotcue_1_enabled', function(value, packet, group, name) {
@@ -617,6 +616,16 @@ KontrolX1.init = function(id) {
     KontrolX1.controller.connectLight('[Channel2]', 'beatsync', function(value, packet, group, name) {
         packet.getField('hid', 'led_103').value = value * LEDon + (1 - value) * LEDoff
     })
+
+    // // LED 41.
+    // KontrolX1.controller.connectLight('', 'shift', function(value, packet, group, name) {
+    //     packet.getField('hid', 'led_41').value = value * LEDon + (1 - value) * LEDoff
+    // })
+
+    // // LED 61.
+    // KontrolX1.controller.connectLight('', 'hotcue', function(value, packet, group, name) {
+    //     packet.getField('hid', 'led_61').value = value * LEDon + (1 - value) * LEDoff
+    // })
 
     // Set scalers for encoders.
     this.scalers = {};
